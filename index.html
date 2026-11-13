@@ -1,0 +1,286 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23c93b4e'/%3E%3Ctext x='16' y='23' font-size='17' fill='%23fff' text-anchor='middle' font-family='sans-serif'%3E%E4%BB%B7%3C/text%3E%3C/svg%3E">
+<title>好价雷达 · 笼中雀sama NS卡带 / PS光盘</title>
+<meta name="description" content="小黑盒博主笼中雀sama 每日 NS 卡带 / PS 光盘好价汇总，按日期整理、可查单品价格走势。">
+<style>
+:root{
+  --bg:#f5f6f8; --card:#fff; --line:#e7e9ef; --line2:#f1f2f6;
+  --tx:#1b1f27; --tx2:#5b6474; --tx3:#939bab;
+  --sw:#e0524c; --ps:#2f6fdd; --dg:#7c4ddb; --up:#e5493a; --down:#12a06a;
+  --accent:#3b6ef0; --shadow:0 1px 2px rgba(20,25,40,.04),0 6px 20px rgba(20,25,40,.05);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  font-size:14px;-webkit-font-smoothing:antialiased}
+button{font-family:inherit;cursor:pointer}
+.wrap{max-width:1280px;margin:0 auto;padding:0 20px}
+a{color:inherit}
+
+/* ---------- header ---------- */
+header{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30}
+/* 只给上下留白，左右沿用 .wrap 的 20px —— 写成 padding:13px 0 会把左右也归零 */
+.hd{display:flex;align-items:center;gap:14px;padding-top:13px;padding-bottom:13px}
+.logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#f0605a,#c93b4e);
+  display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px;flex:0 0 auto;
+  box-shadow:0 3px 10px rgba(201,59,78,.28)}
+h1{font-size:16px;margin:0;font-weight:660;letter-spacing:.2px}
+.meta{font-size:12px;color:var(--tx3);margin-top:3px;display:flex;gap:10px;flex-wrap:wrap}
+.meta b{font-weight:600;color:var(--tx2)}
+.actions{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.btn{padding:8px 14px;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--tx);
+  font-size:13px;font-weight:560;transition:.15s;white-space:nowrap}
+.btn:hover{border-color:#c9cfdb;background:#fafbfc}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{background:#3060d8;border-color:#3060d8}
+.btn.sm{padding:5px 10px;font-size:12px;border-radius:7px}
+a.btn{display:inline-flex;align-items:center;gap:6px;text-decoration:none}
+a.btn svg{width:15px;height:15px;fill:currentColor;flex:none}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+
+/* ---------- kpi ---------- */
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:18px 0 12px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 16px;box-shadow:var(--shadow)}
+.kpi .lab{font-size:12px;color:var(--tx3);margin-bottom:5px}
+.kpi .val{font-size:22px;font-weight:680;letter-spacing:-.5px;font-variant-numeric:tabular-nums}
+.kpi .sub{font-size:11px;color:var(--tx3);margin-top:3px}
+@media(max-width:1000px){.kpis{grid-template-columns:repeat(2,1fr)}}
+
+.srcbar{display:none;align-items:center;gap:8px;font-size:12px;color:#8a5b00;background:#fffaf0;
+  border:1px solid #f3d9a8;border-radius:9px;padding:9px 13px;margin-bottom:12px}
+.srcbar.on{display:flex}
+.srcbar .btn{padding:4px 9px;font-size:11.5px}
+
+/* ---------- card ---------- */
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
+
+/* ---------- tabs ---------- */
+.tabs{display:flex;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:4px;margin-bottom:14px;width:fit-content;box-shadow:var(--shadow)}
+.tab{padding:7px 15px;border:0;background:transparent;border-radius:7px;font-size:13px;font-weight:560;color:var(--tx2)}
+.tab.on{background:#eef2fd;color:var(--accent)}
+.panel{display:none;padding-bottom:44px}
+.panel.on{display:block}
+
+/* ---------- day chips ---------- */
+.daybar{display:flex;gap:8px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line2);
+  overflow-x:auto;scrollbar-width:thin}
+.daybar .lbl{font-size:12px;color:var(--tx3);flex:0 0 auto;margin-right:2px}
+.dchip{flex:0 0 auto;border:1px solid var(--line);background:#fff;border-radius:9px;padding:5px 10px;
+  display:flex;flex-direction:column;align-items:center;gap:1px;min-width:62px;transition:.15s}
+.dchip:hover{border-color:#c3cbdb;background:#fafbfe}
+.dchip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.dchip .dd{font-size:13px;font-weight:620;font-variant-numeric:tabular-nums;line-height:1.25}
+.dchip .dc{font-size:10px;color:var(--tx3);line-height:1.25}
+.dchip.on .dc{color:rgba(255,255,255,.8)}
+.dchip.miss{border-style:dashed;color:var(--tx3)}
+
+/* ---------- day view ---------- */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+@media(max-width:1000px){.cols{grid-template-columns:1fr}}
+.pcol{padding:0 0 6px;overflow:hidden}
+.pcol-hd{display:flex;align-items:center;gap:10px;padding:14px 16px 10px}
+.pcol-hd .st{margin-left:auto;font-size:11px;color:var(--tx3);font-variant-numeric:tabular-nums}
+.sec{padding:0 16px}
+.sec-hd{display:flex;align-items:center;gap:8px;margin:12px 0 2px;font-size:11px;color:var(--tx3);
+  font-weight:600;letter-spacing:.3px}
+.sec-hd:after{content:"";flex:1;height:1px;background:var(--line2)}
+.row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px dashed #f2f3f7;font-size:13px}
+.row:last-child{border-bottom:0}
+.row .n{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:520;cursor:pointer}
+.row .n:hover{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+.row .rg{font-size:11px;color:var(--tx3);flex:0 0 auto}
+.row .pr{font-weight:660;font-variant-numeric:tabular-nums;flex:0 0 auto;min-width:46px;text-align:right;margin-left:auto}
+.row .pr:before{content:"¥";font-size:10px;color:var(--tx3);margin-right:1px;font-weight:500}
+.tg{display:inline-block;padding:1px 5px;border-radius:4px;font-size:10px;font-weight:600;line-height:1.5;flex:0 0 auto}
+.tg.low{background:#e8f7f0;color:var(--down)}
+.tg.cp{background:#f4efff;color:#7449d4}
+.tg.dg{background:#f1ebfd;color:var(--dg)}
+.tg.key{background:#fff3e6;color:#c9761a}
+.spill{display:inline-block;padding:2px 7px;border-radius:5px;font-size:11px;font-weight:600;line-height:1.5}
+.spill.sw{background:#fdeceb;color:var(--sw)}
+.spill.ps{background:#eaf1fd;color:var(--ps)}
+.spill.dg{background:#f1ebfd;color:var(--dg)}
+.empty{padding:52px 20px;text-align:center;color:var(--tx3);font-size:13px;line-height:1.9}
+.empty b{display:block;font-size:15px;color:var(--tx2);margin-bottom:6px;font-weight:620}
+.empty code{background:#eef1f6;border-radius:4px;padding:1px 5px;font-size:12px;color:#4a5568}
+
+/* ---------- charts ---------- */
+svg text{font-family:inherit}
+.legend{display:flex;gap:14px;flex-wrap:wrap;padding:8px 0 2px;font-size:12px;color:var(--tx2)}
+.legend span{display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none;padding:2px 4px;border-radius:5px}
+.legend span:hover{background:#f4f6fa}
+.legend span.off{opacity:.38}
+.legend i{width:14px;height:3px;border-radius:2px;display:inline-block;flex:0 0 auto}
+.chartbar{display:flex;align-items:center;gap:8px;margin:4px 0 2px}
+.chartbar .hint{font-size:11.5px;color:var(--tx3)}
+.chartbar .zb{margin-left:auto;display:flex;gap:6px}
+#gwrap{user-select:none;touch-action:none}
+#gwrap.panning{cursor:grabbing}
+.tip{position:fixed;pointer-events:none;background:rgba(24,28,38,.95);color:#fff;font-size:12px;
+  padding:7px 10px;border-radius:7px;line-height:1.65;opacity:0;transition:opacity .12s;z-index:99;white-space:nowrap}
+.tip.on{opacity:1}
+.dots{transition:r .12s}
+
+/* ---------- game tab ---------- */
+.grid2{display:grid;grid-template-columns:300px 1fr;gap:14px;align-items:start}
+@media(max-width:900px){.grid2{grid-template-columns:1fr}}
+/* 卡片本体是圆角，但子元素（搜索栏、列表）是直角且带底色，
+   不裁一下就会把上面两个圆角盖成方的 —— 和下面两个圆角对不上 */
+.gpanel{overflow:hidden}
+.glist{max-height:640px;overflow:auto}
+.gsearch{padding:10px 12px;border-bottom:1px solid var(--line2);background:#fbfcfe}
+.gsearch input{width:100%;padding:6px 10px;border:1px solid var(--line);border-radius:8px;font-size:13px;
+  background:#fff;color:var(--tx);outline:none;font-family:inherit}
+.gsearch input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(59,110,240,.1)}
+.gempty{padding:24px 14px;text-align:center;color:var(--tx3);font-size:13px}
+.gitem{padding:9px 14px;border-bottom:1px solid var(--line2);cursor:pointer;display:flex;align-items:center;gap:8px}
+.gitem:hover{background:#f8faff}
+.gitem.on{background:#eef2fd;box-shadow:inset 3px 0 0 var(--accent)}
+.gitem .nm{flex:1;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gitem .ct{font-size:11px;color:var(--tx3);flex:0 0 auto}
+.statrow{display:flex;gap:12px;padding:0 0 12px;flex-wrap:wrap}
+.mini{flex:1;min-width:110px;padding:11px 14px;background:#fbfcfe;border:1px solid var(--line2);border-radius:10px}
+.mini .l{font-size:11px;color:var(--tx3);margin-bottom:4px}
+.mini .v{font-size:17px;font-weight:660;font-variant-numeric:tabular-nums}
+.box{padding:16px 18px}
+.box h3{font-size:14px;margin:0 0 4px;font-weight:630}
+.box .desc{font-size:12px;color:var(--tx3);line-height:1.75;margin-bottom:12px}
+.note{font-size:12px;color:var(--tx3);line-height:1.85;background:#fafbfd;border:1px solid var(--line2);
+  border-radius:9px;padding:10px 12px}
+.note b{color:var(--tx2);font-weight:620}
+.note ul{margin:6px 0 0;padding-left:18px}
+.note li{margin:2px 0}
+.note code{background:#eef1f6;border-radius:4px;padding:1px 5px;font-size:11.5px;color:#4a5568}
+/* 右侧留出滚动条的宽度：覆盖式滚动条（Firefox/GTK）会浮在内容上，
+   不留白就会把右对齐的价格挡住 */
+.hist{margin-top:14px;border-top:1px solid var(--line2);max-height:380px;overflow:auto;
+  padding-right:16px;scrollbar-gutter:stable;scrollbar-width:thin}
+.hist-hd{position:sticky;top:0;background:#fff;z-index:2;display:flex;align-items:center;gap:8px;
+  padding:10px 0 6px;font-size:12px;color:var(--tx3)}
+.hist-hd b{color:var(--tx2);font-weight:620}
+.about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}
+@media(max-width:980px){.about-grid{grid-template-columns:1fr}}
+.kv{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.kv i{font-style:normal;font-size:11.5px;background:#f4f6fa;border:1px solid var(--line2);
+  border-radius:6px;padding:2px 7px;color:var(--tx2);font-variant-numeric:tabular-nums}
+footer{text-align:center;font-size:12px;color:var(--tx3);padding:8px 20px 40px;line-height:1.9}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap hd">
+    <div class="logo">价</div>
+    <div>
+      <h1>好价雷达 · 笼中雀sama NS卡带 / PS光盘</h1>
+      <div class="meta">
+        <span>数据更新 <b id="upd">—</b></span>
+        <span>覆盖 <b id="rng">—</b></span>
+        <span>条目 <b id="cnt">—</b></span>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn primary" id="btnPick" title="选择 txt 文件夹，在本页直接解析并并入现有数据，不上传">导入 txt 文件夹</button>
+      <a class="btn" href="https://github.com/pnshap/haojia" target="_blank" rel="noopener" title="在 GitHub 上查看本项目源码"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>GitHub</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="srcbar" id="srcbar">
+    <span id="srcTxt"></span>
+    <button class="btn" id="btnBack">回到内置数据</button>
+  </div>
+
+  <div class="tabs">
+    <button class="tab on" data-tab="day">好价清单</button>
+    <button class="tab" data-tab="game">单品走势</button>
+    <button class="tab" data-tab="about">数据说明</button>
+  </div>
+
+  <!-- ======== 好价清单 ======== -->
+  <section class="panel on" id="p-day">
+    <div class="card">
+      <div class="daybar" id="daybar"><span class="lbl">正在解析数据…</span></div>
+      <div id="dayBody"><div class="empty">数据包解码中…</div></div>
+    </div>
+  </section>
+
+  <!-- ======== 单品走势 ======== -->
+  <section class="panel" id="p-game">
+    <div class="grid2">
+      <div class="card gpanel">
+        <div class="gsearch"><input type="search" id="gq" placeholder="搜索游戏名，如 塞尔达"></div>
+        <div class="glist" id="glist"></div>
+      </div>
+      <div id="gameBody"><div class="card"><div class="empty">先选一只游戏</div></div></div>
+    </div>
+  </section>
+
+  <!-- ======== 数据说明 ======== -->
+  <section class="panel" id="p-about">
+    <div class="about-grid">
+      <div class="card box">
+        <h3>数据来源</h3>
+        <div class="note" style="margin-bottom:10px">
+          整合自小黑盒博主 <b>笼中雀sama</b> 每日发布的 NS 卡带 / PS 光盘好价帖。<br>
+          价格均为帖子原文标注，仅作比价参考，不构成购买建议；实际成交以商家为准。<br>
+          <b>精力有限，数据不可能能够随时更新，想要第一时间获得好价推荐请关注@笼中雀sama喵，关注@笼中雀sama谢谢喵。</b> <br>
+          若您想帮忙每日更新数据，或是对项目有改进更新建议，欢迎提交Issue或直接Pull requests。
+        </div>
+
+        <h3>导入格式</h3>
+        <div class="note">
+          <code>月.日｜平台好价xxx.txt</code>，一篇帖子存一个 txt。<br>
+          例：<code>11.5｜Switch好价卡带.txt</code>、<code>11.5｜Ps好价光盘.txt</code><br>
+          日期取文件名，跨年自动处理；平台按文件名判断（switch / 卡带 → Switch，ps / 光盘 → PS）。<br>
+          正文直接贴帖子原文：<code>1.宝可梦｜🇭🇰228</code>、<code>王国之泪｜🇯🇵252｜史低199</code>、
+          <code>只狼｜🇭🇰203｜凑-50</code>，分区标题、分割线、口令与券标记都会自动识别。<br>
+          仓库 <code>txt/</code> 下留了 11.10 的两篇原始 txt 作格式示例，可以照着抄。
+        </div>
+
+        <h3 style="margin-top:16px">生成页面</h3>
+        <div class="note">
+          把新抓到的 txt 放进 <code>txt/</code> 目录，跑一次打包脚本（<code>python3 build.py</code>），
+          再把页面推送到 GitHub Pages 即可。<br>
+          打包是<b>增量合并</b>：只有新增或内容改动过的帖子会被写入，已有数据里、<code>txt/</code> 中没有的帖子会原样保留，
+          所以目录里只需要放最近几天的 txt，不必凑齐历史。<br>
+          临时看新数据不用打包：点右上角「导入 txt 文件夹」选目录，浏览器当场解析并同样按增量并入，
+          只留在本页内存里，刷新即恢复内置数据。
+        </div>
+      </div>
+
+      <div class="card box">
+        <h3>解析统计</h3>
+        <div class="desc" id="aboutDesc">—</div>
+        <div class="kv" id="aboutKv"></div>
+        <div class="note" style="margin-top:14px">
+          <b>关于口径</b><br>
+          同一天、同一区服、同一款游戏出现多次时只保留一条（取最低价）；
+          名称写法相近的（大小写、空格、括号备注、ns1/ns2 尾巴）会合并成一款，方便看走势。<br>
+          数字版单独成线（虚线），实体版按平台分线。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    数据来源：小黑盒博主「笼中雀sama」 · 仅供个人比价参考
+  </footer>
+
+</div>
+
+<div class="tip" id="tip"></div>
+<input type="file" id="pickDir" webkitdirectory="" directory="" multiple="" hidden="">
+
+<script src="js/parser.js"></script>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+
+</body></html>

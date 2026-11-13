@@ -1,0 +1,16 @@
+# 11.10 的两篇作格式示例
+txt/*.txt
+!txt/11.10｜Switch好价卡带.txt
+!txt/11.10｜Ps好价光盘.txt
+
+# 构建产物 / 中间文件
+data.json
+js/posts.js
+__pycache__/
+*.pyc
+
+# 本地工作区与系统垃圾
+.workbuddy/
+.Trash-*
+.DS_Store
+Thumbs.db
