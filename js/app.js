@@ -70,6 +70,11 @@
   function buildData(posts) {
     var r = Parser.buildItems(posts);
     var items = r.items;
+    // 手动合并：js/merge.js 里配置的「同一款游戏的多种写法」
+    if (window.HaojiaMerge) {
+      window.HaojiaMerge.attach(items);
+      items = window.HaojiaMerge.apply(items);
+    }
     var slim = items.map(function (it) {
       return {
         n: it.name, f: it.norm, p: it.platform, s: it.section,

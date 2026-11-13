@@ -247,12 +247,8 @@ footer{text-align:center;font-size:12px;color:var(--tx3);padding:8px 20px 40px;l
 
         <h3 style="margin-top:16px">生成页面</h3>
         <div class="note">
-          把新抓到的 txt 放进 <code>txt/</code> 目录，跑一次打包脚本（<code>python3 build.py</code>），
-          再把页面推送到 GitHub Pages 即可。<br>
-          打包是<b>增量合并</b>：只有新增或内容改动过的帖子会被写入，已有数据里、<code>txt/</code> 中没有的帖子会原样保留，
-          所以目录里只需要放最近几天的 txt，不必凑齐历史。<br>
-          临时看新数据不用打包：点右上角「导入 txt 文件夹」选目录，浏览器当场解析并同样按增量并入，
-          只留在本页内存里，刷新即恢复内置数据。
+          把帖子正文 txt 放进 <code>txt/</code> 目录，运行（<code>python3 build.py</code>），
+          临时导入数据：点右上角「导入 txt 文件夹」。
         </div>
       </div>
 
@@ -261,10 +257,10 @@ footer{text-align:center;font-size:12px;color:var(--tx3);padding:8px 20px 40px;l
         <div class="desc" id="aboutDesc">—</div>
         <div class="kv" id="aboutKv"></div>
         <div class="note" style="margin-top:14px">
-          <b>关于口径</b><br>
-          同一天、同一区服、同一款游戏出现多次时只保留一条（取最低价）；
-          名称写法相近的（大小写、空格、括号备注、ns1/ns2 尾巴）会合并成一款，方便看走势。<br>
-          数字版单独成线（虚线），实体版按平台分线。
+          <b>另外的说明</b><br>
+          同一天、同一区服、同一款游戏出现多次时只保留一条（取最低价），不过若出现这种情况大概率是两个不同游戏被错合成一个了；
+          <b>由于游戏命名规则五花八门错综复杂并且雀大人的命名也有点随心所欲再加上本人游戏阅历没那么丰富所以对哪些游戏名称需要合并哪些不需要也没有准确的判断只能根据经验慢慢完善所以难免会有疏漏所以有大手子来pullrequests最好了没有也就将就看吧</b><br>
+
         </div>
       </div>
     </div>
@@ -280,6 +276,7 @@ footer{text-align:center;font-size:12px;color:var(--tx3);padding:8px 20px 40px;l
 <input type="file" id="pickDir" webkitdirectory="" directory="" multiple="" hidden="">
 
 <script src="js/parser.js"></script>
+<script src="js/merge.js"></script>
 <script src="js/data.js"></script>
 <script src="js/app.js"></script>
 
